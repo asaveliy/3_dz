@@ -8,38 +8,17 @@
 
 
 
-// РЕШЕНИЕ НЕДОСТАТОЧНОЕ: 
-// ОСТАЛОСЬ НАЙТИ СПОСОБ УДАЛЯТЬ ЗАПЯТУЮ ИЗ МАССИВА, 
-// ИЛИ СЧИТЫВАТЬ ТОЛЬКО ЦИФРЫ С ВВОДИМОГО МАССИВА
 
 
-
-
-
-
-double ConvertNatur(double n, int length)
+int ConvertNatur(double n, int length)
 {
     for (int i = 0; i < length; i++)
     {
         n *= 10;
     }
-    return n;
+    return Convert.ToInt32(n);
 }
 
-
-
-// string DelVirgola(string array, int length) 
-// {
-//     for (int i = 0; i < length; i++)
-//     {
-//         if (array[i] == array[i] / 1)
-//         {
-//             return array[i];
-//         }
-//         else i++;
-//     }
-//     return array;
-// }
 
 
 
@@ -57,14 +36,12 @@ int Summa(double number)
 
 
 
-
 Console.WriteLine("Введите число - целое, вещественное, в экспоненциальной форме: ");
 double num = Convert.ToDouble(Console.ReadLine());
 string str = Convert.ToString(num);
 int length = str.Length;
+num = ConvertNatur(num, length);
 Console.WriteLine($"Сумма цифр в данном числе: {Summa(num)}");
 
-// Console.WriteLine(str);
-// Console.WriteLine(length);
-// Console.WriteLine(naturNum);
+
 
