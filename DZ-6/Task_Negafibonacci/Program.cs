@@ -7,14 +7,49 @@
 
 
 
+void Fibonacci(int[] array)
+{
+    array[0] = 0;
+    array[1] = 1;
+    for (int i = 2; i < array.Length; i++)
+    {
+        array[i] = array[i - 1] + array[i - 2];
+    }
+}
 
 
 
-Console.WriteLine("Задайте число");
+
+int[] NegaFibonacci(int[] coll)
+{
+    int size = coll.Length * 2 - 1;
+    int[] newArray = new int[size];
+    int middle = Convert.ToInt32(size / 2);
+    newArray[middle] = 0;
+    for (int i = 1; i <= middle; i++)
+    {
+        newArray[middle + i] = coll[i];
+        newArray[middle - i] = Convert.ToInt32(Math.Pow(-1, i + 1)) * coll[i];
+    }
+    return newArray;
+}
+
+
+
+void PrintArray(int[] array)
+{
+    foreach (int itenumber in array)
+        Console.Write($"{itenumber}, ");
+    Console.WriteLine();
+}
+
+
+
+Console.WriteLine("Введите число");
 int n = Convert.ToInt32(Console.ReadLine());
-int[] Fibonacci = new int[n];
-int[] NegaFibonacci = new int[2 * n - 1];
-
-
+int[] array = new int[n];
+Fibonacci(array);
+PrintArray(array);
+Console.WriteLine(String.Join(", ", NegaFibonacci(array)));
 
 
