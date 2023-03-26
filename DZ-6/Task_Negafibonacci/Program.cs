@@ -1,2 +1,20 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿// Задача НЕГАФИБОНАЧЧИ. Задайте число. Составьте массив чисел НегаФибоначчи, 
+// в том числе для отрицательных индексов.
+
+// *Пример:*
+
+// - для k = 9 массив будет выглядеть так: [-21 ,13, -8, 5, −3, 2, −1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21]
+
+
+
+
+
+
+Console.WriteLine("Задайте число");
+int n = Convert.ToInt32(Console.ReadLine());
+int[] Fibonacci = new int[n];
+int[] NegaFibonacci = new int[2 * n - 1];
+
+
+
+
