@@ -49,7 +49,6 @@ Console.WriteLine("Введите число");
 int n = Convert.ToInt32(Console.ReadLine());
 int[] array = new int[n];
 Fibonacci(array);
-PrintArray(array);
 Console.WriteLine(String.Join(", ", NegaFibonacci(array)));
 
 
