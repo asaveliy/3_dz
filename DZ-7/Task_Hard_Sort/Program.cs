@@ -18,18 +18,39 @@ void FillArray(int[,] array)
 
 
 
-int[,] SortArray(int[,] arr, int[,] matr, int n, int m)
-{
-    for (int i = 0; i < arr.GetLength(0); i++)
-        for (int j = 0; j < arr.GetLength(1); j++)
-            while (n < arr.GetLength(0) - 1 && m < arr.GetLength(1) - 1)
-                if (matr[n, m] < arr[i, j])
-                {
-                    matr[n, m] = arr[i, j];
-                }
-return matr;
-}
 
+int[,] SortArray(int[,] arr)
+{
+    int temp = arr[0, 0];
+    for (int i = 0; i < arr.GetLength(1); i++)  // 3. повторно запускает (2) и следовательно (1) до победного
+        for (int j = 0; j < arr.GetLength(0); j++) // 2. переключает строки и снова запускает (1) 
+            for (int k = 1; k < arr.GetLength(1); k++) // 1. запускает проверку по строке
+                if (temp > arr[j, k])
+                {
+                    temp = arr[j, k - 1];
+                    arr[j, k - 1] = arr[j, k];
+                    arr[j, k] = temp;
+                }
+                else
+                {
+                    temp = arr[j, k - 1];
+                }
+    temp = arr[0, 0];
+    for (int i = 0; i < arr.GetLength(0); i++)  // 3. запускаем (2) и (1) до победного
+        for (int j = 1; j < arr.GetLength(1); j++)  // 2. перебираем столбцы
+            for (int k = 0; k < arr.GetLength(0); k++) // 1. перебираем столбцы и больший эл. передвигаем вниз
+                if (temp > arr[j, k])
+                {
+                    temp = arr[j - 1, k];
+                    arr[j - 1, k] = arr[j, k];
+                    arr[j, k] = temp;
+                }
+                else
+                {
+                    temp = arr[j - 1, k];
+                }
+    return arr;
+}
 
 
 
@@ -52,12 +73,9 @@ int rows = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Введите количество столбцов");
 int cols = Convert.ToInt32(Console.ReadLine());
 int[,] array = new int[rows, cols];
-int[,] matrix = new int[rows, cols];
 FillArray(array);
 PrintArray(array);
 Console.WriteLine("отсортированный массив:");
-SortArray(array, matrix, rows, cols);
-PrintArray(matrix);
+SortArray(array);
+PrintArray(array);
 
-// int smaller = array[1,0];
-// Console.WriteLine(smaller);
